@@ -6,10 +6,10 @@ const Page = () => {
   return (
       <main className="main-container">
         <section className="home-grid">
-          <div className="coin-overview">
+          <div id="coin-overview">
               <div className="header pt-2">
                  <Image src="https://assets.coingecko.com/coins/images/1/large/bitcoin.png"
-                        alt="Bitscoin" width={56} height={56}/>
+                        alt="Bitcoin" width={56} height={56}/>
                 <div className="info">
                   <p>Bitcoin / BTC</p>
                   <h1>$89,113.00</h1>
@@ -18,7 +18,9 @@ const Page = () => {
           </div>
 
            <p>Trending Coins</p>
-            <DataTable />
+            <DataTable data={[]} columns={[]} rowKey={function (row: never, index: number): React.Key {
+                throw new Error("Function not implemented.");
+            }}/>
         </section>
 
         <section className="w-full mt-7 space-y-4">
