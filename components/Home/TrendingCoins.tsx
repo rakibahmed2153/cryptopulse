@@ -81,26 +81,33 @@ const columns: DataTableColumn<TrendingCoin>[] = [
 //         }
 //     }
 // ]
-
+type TrendingResponse = {
+    coins: TrendingCoin[];
+};
 const TrendingCoins = async () => {
+    let trendingCoins: TrendingResponse | undefined;
+    try {
+        trendingCoins = await fetcher<TrendingResponse>(
+            '/search/trending', undefined, 300);
+    } catch (error) {
+        console.error(error);
+    }
 
-    const trendingCoins = await fetcher< {coins: TrendingCoin[]}>(
-        '/search/trending', undefined, 300);
+    if (!trendingCoins) {
+        return <div>Failed to load coin data</div>;
+    }
 
     return (
         <div id="trending-coins">
             <h4>Trending Coins</h4>
-
-            <div id="trending-coins">
-                <DataTable
-                    data={trendingCoins.coins.slice(0,6) || []}
-                    columns={columns}
-                    rowKey={(coin) => coin.item.id}
-                    tableClassName="trending-coins-table"
-                    headerCellClassName="py-3!"
-                    bodyCellClassName="py-2!"
-                />
-            </div>
+            <DataTable
+                data={trendingCoins.coins.slice(0,6) || []}
+                columns={columns}
+                rowKey={(coin) => coin.item.id}
+                tableClassName="trending-coins-table"
+                headerCellClassName="py-3!"
+                bodyCellClassName="py-2!"
+            />
         </div>
     )
 }
