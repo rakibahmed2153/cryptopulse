@@ -46,41 +46,7 @@ const columns: DataTableColumn<TrendingCoin>[] = [
         cell: (coin) => coin.item.data.price
     },
 ]
-//
-// const dummyTrendingCoins: TrendingCoin[] = [
-//     {
-//         item: {
-//             id: `1`,
-//             name: `bitcoin`,
-//             symbol: `BTC`,
-//             market_cap_rank: 1,
-//             thumb: `/assets/logo.svg`,
-//             large: `/assets/logo.svg`,
-//             data: {
-//                 price: 891123.0,
-//                 price_change_percentage_24h: {
-//                     usd: 2.5,
-//                 }
-//             }
-//         }
-//     },
-//     {
-//         item: {
-//             id: `2`,
-//             name: `ethereum`,
-//             symbol: `Ethereum`,
-//             market_cap_rank: 2,
-//             thumb: `/assets/logo.svg`,
-//             large: `/assets/logo.svg`,
-//             data: {
-//                 price: 25000.0,
-//                 price_change_percentage_24h: {
-//                     usd: -1.25,
-//                 }
-//             }
-//         }
-//     }
-// ]
+
 type TrendingResponse = {
     coins: TrendingCoin[];
 };
